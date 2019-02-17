@@ -32,18 +32,13 @@ func main() {
 
 //adamsBashforth takes an array of t and w values, takes the first four values, and returns an array of AB values
 func adamsBashforth(in []Entry) []Entry {
-	//var t float64
-	//var z Entry //I'm calling this variable z because it will make it much more readable. z is a variable to hold the working pair (w, t)
 	output := make([]Entry, 4)
 	for i := 0; i < 4; i++ {
 		output[i] = in[i]
 	}
 	for j := 4; j < N; j++ {
 		var z Entry
-		w0 := in[j-4]
-		w1 := in[j-3]
-		w2 := in[j-2]
-		w3 := in[j-1]
+		w0, w1, w2, w3 := in[j-4], in[j-3], in[j-2], in[j-1]
 		//Update t
 		z.t = a + float64(j)*h
 		//Predict new w value
