@@ -67,10 +67,10 @@
 
 \section{Introduction}
 Tom the Cat is chasing Jerry the Mouse, with an initial gap between them of $100$m. Tom and Jerry's velocities
-are given as $v_c = 4 - at$ ms$^{-1}$ and $v_m = v_{max}-ks = 3 - 0.02s$ ms$^{-1}$, respectively,
+are given as $v_c = 4 - at$ m$\cdot$s$^{-1}$ and $v_m = v_{max}-ks = 3 - 0.02s$ m$\cdot$s$^{-1}$, respectively,
 with $0<a$.
 The velocity of the change in the gap between Tom and Jerry, $s$, is given by
-$\frac{ds}{dt} = v_m - v_c = -1 -0.02s + at$ ms$^{-1}$.
+$\frac{ds}{dt} = v_m - v_c = -1 -0.02s + at$ m$\cdot$s$^{-1}$.
 
 \section{Problem}
 Find the true solution for when Tom will catch Jerry by plotting the gap distance.
@@ -103,17 +103,19 @@ So, our final equaiton we want to plot is:
 
 The exact solutions to when Tom catches Jerry are the points on the surface in Figure 1 that intersect with
 the plane at $s=0$ with minimal $t$ value. This can be seen in the figure as the curve traced
-by the surface where it intersects the bottom of the plot. The plot indicates that at $a=0.01$ m$s^{-1}$, Tom
+by the surface where it intersects the bottom of the plot. The plot indicates that at $a=0.01$ m$\cdot$s$^{-1}$, Tom
 will catch Jerry at roughly 82 seconds.
 \section{Problem}
-For $a = 0.01$ ms$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
+For $a = 0.01$ m$\cdot$s$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
 Use an appropriate step size to ensure an accurate result.
 \\
 \\
 The source code for both Runge-Kutta and Adams-Bashforth is attached as Appendix 1, and at
 https://github.com/jfemory/numericalAnalysisFinal. From Table \ref{RKout}, the condensed
 output of the fourth-order Runge-Kutta calculations, we see that Tom catches Jerry between
-81.5 and 82 seconds, when the sign of the distance changes to negative.
+81.5 and 82 seconds, when the sign of the distance changes to negative. A step
+size of 0.5s was chosen to be able to pick a single secodn at which
+Tom catches Jerry.
 
 \begin{table}[h]
   \caption{Runge-Kutta Output} %title of the table
@@ -158,7 +160,7 @@ will catch Jerry?
 \\
 No. It is not possible. Figure 2 indicates the accelerations and times where the gap is less
 than zero. The border of the blue area indicates where the sign of the gap changes. So, we can see can see
-that any constant acceleration path (horizontal lines) that does
+that any constant acceleration path (horizontal line) that does
 not reduce the gap to 0m by 120s has no solutions to the
 right of 120s. In other words, any constant acceleration path
 that has a zero to the right of 120s also has a zero to the left of 120s. Therefore, no,
