@@ -1,0 +1,107 @@
+%------------------------------------------------------------------------------
+% Beginning of journal.tex
+%------------------------------------------------------------------------------
+%
+% AMS-LaTeX version 2 sample file for journals, based on amsart.cls.
+%
+%        ***     DO NOT USE THIS FILE AS A STARTER.      ***
+%        ***  USE THE JOURNAL-SPECIFIC *.TEMPLATE FILE.  ***
+%
+% Replace amsart by the documentclass for the target journal, e.g., tran-l.
+%
+\documentclass{amsart}
+%     If your article includes graphics, uncomment this command.
+\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate}
+
+
+\setcounter{section}{-1}
+
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{notation}[theorem]{Notation}
+
+\numberwithin{equation}{section}
+%\setcounter{section}{-1}
+%%
+\mathchardef\ordinarycolon\mathcode`\:
+\mathcode`\:=\string"8000
+\begingroup \catcode`\:=\active
+  \gdef:{\mathrel{\mathop\ordinarycolon}}
+\endgroup
+
+
+\newcommand\nsleq{\mathrel{\ooalign{$\leqslant$\cr\hidewidth$|$\hidewidth\cr}}}
+\newcommand{\sleq}{\leqslant}
+\newcommand{\No}{\mathbb{N}\bf{o}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+%    Blank box placeholder for figures (to avoid requiring any
+%    particular graphics capabilities for printing this document).
+\newcommand{\blankbox}[2]{%
+  \parbox{\columnwidth}{\centering
+%    Set fboxsep to 0 so that the actual size of the box will match the
+%    given measurements more closely.
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
+  }%
+}
+
+\begin{document}
+\title{Numerical Analysis Programing Project \\ Dr. Songming Hou}
+\author{John Emory}
+\address{Program of Mathematics and Statistics, Louisiana Tech University}
+\email{jfe004@latech.edu}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+Tom the Cat is chasing Jerry the Mouse, with an initial gap between them of $100$m. Tom and Jerry's velocities
+are given as $v_c = 4 - at$ ms$^{-1}$ and $v_m = v_{max}-ks = 3 - 0.02s$ ms$^{-1}$, respectively,
+with $0<a$.
+The velocity of the change in the gap between Tom and Jerry, $s$, is given by
+$\frac{ds}{dt} = v_m - v_c = -1 -0.02s + at$ ms$^{-1}$.
+
+\section{Problem}
+Find the true solution for when Tom will catch Jerry by plotting the gap distance.
+\\
+\\
+First, we need to solve $\frac{ds}{dt}$. Noting that our equation is a linear first-order ODE, we
+need to put it into standard form:
+\[\frac{ds}{dt} + 0.02s = at -1\]
+Next, we find the integration factor. Observing that in the second additive term on the left hand side
+we are multiplying by $t^0$, we see the integration factor is $e^{0.02t}$. This gives us the form:
+\[\frac{d}{dt}s\cdot e^{0.02t} = ( at-1 )\cdot e^{0.02t}\]
+Taking the antiderivative of both sides gives:
+\[\int\frac{d}{dt}s\cdot e^{0.02t} dt = a\cdot \int t \cdot e^{0.02t} dt - \int e^{0.02t} dt\]
+\[s\cdot e^{0.02t} = 50at\cdot e^{0.02t} = 2500a\cdot e^{0.02t} - 50e^{0.02t} +c\]
+Then, canceling $e^{0.02t}$ gives:
+\[s = 50a(t-50)-50+c \cdot e^{-0.02t}\]
+Solving for $c$ at our initial value of $s(0)=100$ m will yield an equation we can use software to plot. Since $t=0$, we have:
+\[100=-2500a-50+c \cdot e^{-0.02t}\]
+\[c = 2500a + 150\]
+So, our final equaiton we want to plot is:
+\[s(a,t) = 50a(t-50+50\cdot e^{-0.02t})+150\cdot e^{-0.02t} -50\]
+\section{Problem}
+For $a = 0.01$ ms$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
+Use an appropriate step size to ensure an accurate result.
+
+\section{Problem}
+Use the Adams-Bashforth forth-order predictor-corrector to compute when Tom will catch Jerry using the
+results form Runge-Kutta, above, for the initial values of Adams-Bashforth.
+
+\section{Problem}
+Suppose Tom's acceleration is unknown. If Tom does not catch Jerry in $120$s, is it possible that Tom
+will catch Jerry?
+
+\end{document}
