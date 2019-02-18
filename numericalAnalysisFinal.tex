@@ -96,7 +96,7 @@ So, our final equaiton we want to plot is:
 \begin{figure}
   \centering
   \begin{center}
-    \includegraphics[scale=0.1]{3dPlot-NumericalFinal.jpg}
+    \includegraphics[scale=0.2]{3dPlot-NumericalFinal.jpg}
     \caption{Plot of solutions to $\frac{ds}{dt}$}
   \end{center}
 \end{figure}
@@ -108,6 +108,7 @@ the plane at $s=0$ with minimal $t$ value
 For $a = 0.01$ ms$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
 Use an appropriate step size to ensure an accurate result.
 
+
 \section{Problem}
 Use the Adams-Bashforth forth-order predictor-corrector to compute when Tom will catch Jerry using the
 results form Runge-Kutta, above, for the initial values of Adams-Bashforth.
@@ -115,5 +116,20 @@ results form Runge-Kutta, above, for the initial values of Adams-Bashforth.
 \section{Problem}
 Suppose Tom's acceleration is unknown. If Tom does not catch Jerry in $120$s, is it possible that Tom
 will catch Jerry?
+\\
+\\
+No. It is not possible. From Figure 2, we can see
+that any constant acceleration path (horizontal lines) that does
+not reduce the gap to 0m by 120s has no solutions to the
+right of 120s. In other words, any constant acceleration path
+that has a zero to the right of 120s also has a zero to the left of 120s. Therefore, no,
+if tom has not caught Jerry by 120s, Tom will never catch Jerry.
 
+\begin{figure}
+  \centering
+  \begin{center}
+    \includegraphics[scale=0.2]{2dPlot-NumericalFinal.jpg}
+    \caption{Time vs Acceleration Zeros}
+  \end{center}
+\end{figure}
 \end{document}
