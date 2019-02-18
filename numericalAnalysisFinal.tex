@@ -11,8 +11,8 @@
 %
 \documentclass{amsart}
 %     If your article includes graphics, uncomment this command.
-\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate,svg,graphicx,caption}
-
+\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate,svg,graphicx,caption,listings}
+\usepackage{listings-golang}
 
 \setcounter{section}{-1}
 
@@ -96,7 +96,7 @@ So, our final equaiton we want to plot is:
 \begin{figure}
   \centering
   \begin{center}
-    \includegraphics[scale=0.17]{3dPlot-NumericalFinal.jpg}
+    \includegraphics[scale=0.13]{3dPlot-NumericalFinal.jpg}
     \caption{Plot of solutions to $\frac{ds}{dt}$}
   \end{center}
 \end{figure}
@@ -130,6 +130,26 @@ output of the fourth-order Runge-Kutta calculations, we see that Tom catches Jer
 \section{Problem}
 Use the Adams-Bashforth forth-order predictor-corrector to compute when Tom will catch Jerry using the
 results form Runge-Kutta, above, for the initial values of Adams-Bashforth.
+\\
+\\
+Similar to the previous question using the Runge-Kutta technique, relevant values
+near the sign change for the Adams-Bashforth are given in Table \ref{ABout}.
+\begin{table}[h]
+  \caption{Adams-Bashforth Output} %title of the table
+  \centering % centering table
+  \begin{tabular}{c rrrrrrr} % creating eight columns
+  \hline\hline %inserting double-line
+  Time (s) & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
+  Distance (m) & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
+  \hline % inserts single-line
+  \end{tabular}
+  \label{ABout}
+  \end{table}
+
+  It can be seen that the Tables 1 and 2 are in agreement up to four decimal places.
+  The results between the two methods do in fact differ at higher precision. Please see
+  Apendix 2 for a complete comparison at precision. The initial four values from Runge-Kutta
+  were used as input for the Adams-Bashforth method.
 
 \section{Problem}
 Suppose Tom's acceleration is unknown. If Tom does not catch Jerry in $120$s, is it possible that Tom
@@ -147,8 +167,20 @@ if tom has not caught Jerry by 120s, Tom will never catch Jerry.
 \begin{figure}
   \centering
   \begin{center}
-    \includegraphics[scale=0.13]{2dPlot-NumericalFinal.jpg}
+    \includegraphics[scale=0.12]{2dPlot-NumericalFinal.jpg}
     \caption{Time vs Acceleration Zeros}
   \end{center}
 \end{figure}
+
+\appendix
+\section{Runge-Kutta and Adams-Bashforth Source Code (Golang)}
+\lstinputlisting[language=Golang]{NumericalMethods.go}
+\newpage
+\section{3d Plot Source Code (Matlab)}
+\lstinputlisting[language=Matlab]{PlotDiffEQ.m}
+\newpage
+\section{2d Plot Source Code (Matlab)}
+\lstinputlisting[language=Matlab]{PlotDiffEQ2d.m}
+\newpage
+\section{Complete Tables}
 \end{document}
