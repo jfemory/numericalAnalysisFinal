@@ -11,7 +11,7 @@
 %
 \documentclass{amsart}
 %     If your article includes graphics, uncomment this command.
-\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate,svg,graphicx,caption,listings}
+\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate,svg,graphicx,caption,listings,subcaption}
 \usepackage{listings-golang}
 
 \setcounter{section}{-1}
@@ -120,8 +120,8 @@ output of the fourth-order Runge-Kutta calculations, we see that Tom catches Jer
   \centering % centering table
   \begin{tabular}{c rrrrrrr} % creating eight columns
   \hline\hline %inserting double-line
-  Time (s) & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
-  Distance (m) & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
+  {\bf Time (s)} & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
+  {\bf Distance (m)} & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
   \hline % inserts single-line
   \end{tabular}
   \label{RKout}
@@ -139,8 +139,8 @@ near the sign change for the Adams-Bashforth are given in Table \ref{ABout}.
   \centering % centering table
   \begin{tabular}{c rrrrrrr} % creating eight columns
   \hline\hline %inserting double-line
-  Time (s) & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
-  Distance (m) & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
+  {\bf Time (s)} & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
+  {\bf Distance (m)} & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
   \hline % inserts single-line
   \end{tabular}
   \label{ABout}
@@ -176,11 +176,108 @@ if tom has not caught Jerry by 120s, Tom will never catch Jerry.
 \section{Runge-Kutta and Adams-Bashforth Source Code (Golang)}
 \lstinputlisting[language=Golang]{NumericalMethods.go}
 \newpage
-\section{3d Plot Source Code (Matlab)}
+\section{Figure 1 Source Code (Matlab)}
 \lstinputlisting[language=Matlab]{PlotDiffEQ.m}
 \newpage
-\section{2d Plot Source Code (Matlab)}
+\section{Figure 2 Source Code (Matlab)}
 \lstinputlisting[language=Matlab]{PlotDiffEQ2d.m}
 \newpage
-\section{Complete Tables}
+\section{Extended Tables}
+
+\begin{table}[h]
+  \begin{subtable}[t]{.5\linewidth}%
+    \centering%
+    \begin{tabular}{cc}
+      \hline\hline
+      {\bf Time (s)} & {\bf Distance (m)}\\
+      \hline
+      0 & 100 \\
+      0.5 & 98.50872090625 \\
+      1 & 97.03476782897047 \\
+      1.5 & 95.57796837141707 \\
+      2 & 94.13815185222172 \\
+      ... & ... \\
+      75 & 1.5477780308970484\\
+      75.5 & 1.409246147796525\\
+      76 & 1.2745802215262776\\
+      76.5 & 1.1437417851731293\\
+      77 & 1.0166927545760849\\
+      77.5 & 0.8933954245178823\\
+      78 & 0.7738124649544401\\
+      78.5 & 0.6579069172818212\\
+      79 & 0.545642190640342\\
+      79.5 & 0.4369820582554564\\
+      80 & 0.3318906538150474\\
+      80.5 & 0.23033246788276646\\
+      81 & 0.13227234434706014\\
+      81.5 & 0.03767547690552964\\
+      82 & -0.0534925944157284\\
+      82.5 & -0.14126598670814805\\
+      83 & -0.22567847759243165\\
+      83.5 & -0.30676350859634005\\
+      84 & -0.38455418849887313\\
+      84.5 & -0.4590832966411755\\
+      85 & -0.5303832862044977\\
+      85.5 & -0.5984862874555416\\
+      86 & -0.6634241109595136\\
+      86.5 & -0.725228250761208\\
+      87 & -0.7839298875344373\\
+      87.5 & -0.8395598917001258\\
+      88 & -0.8921488265133776\\
+      88.5 & -0.941726951119827\\
+      89 & -0.988324223581579\\
+      89.5 & -1.0319703038730401\\
+     \hline\hline
+    \end{tabular}
+    \caption{Runge-Kutta}\label{table1}
+  \end{subtable}%
+  \begin{subtable}[t]{.5\linewidth}
+    \centering
+    \begin{tabular}{cc}
+      \hline\hline
+      {\bf Time (s)} & {\bf Distance (m)}\\
+      \hline
+      0.0 & 100\\
+      0.5 & 98.50872090625 \\
+      1.0 & 97.03476782897047 \\
+      1.5 & 95.57796837141707\\
+      2.0 & 94.13815185160837\\
+      ... & ... \\
+      75.0 & 1.5477780307546034\\
+      75.5 & 1.4092461476554976\\
+      76.0 & 1.2745802213866533\\
+      76.5 & 1.1437417850348943\\
+      77.0 & 1.0166927544392255\\
+      77.5 & 0.8933954243823846\\
+      78.0 & 0.7738124648202905\\
+      78.5 & 0.6579069171490064\\
+      79.0 & 0.5456421905088489\\
+      79.5 & 0.43698205812527163\\
+      80.0 & 0.331890653686158\\
+      80.5 & 0.23033246775515948\\
+      81.0 & 0.13227234422072293\\
+      81.5 & 0.03767547678044947\\
+      82.0 & -0.05349259453956401\\
+      82.5 & -0.14126598683075153\\
+      83.0 & -0.22567847771381516\\
+      83.5 & -0.30676350871651575\\
+      84.0 & -0.3845541886178531\\
+      84.5 & -0.4590832967589716\\
+      85.0 & -0.5303832863211217\\
+      85.5 & -0.5984862875710052\\
+      86.0 & -0.6634241110738284\\
+      86.5 & -0.7252282508743852\\
+      87.0 & -0.7839298876464884\\
+      87.5 & -0.839559891811062\\
+      88.0 & -0.8921488266232099\\
+      88.5 & -0.9417269512285665\\
+      89.0 & -0.9883242236892366\\
+      89.5 & -1.0319703039796264\\
+      \hline\hline
+    \end{tabular}
+    \caption{Adams-Bashforth}
+  \end{subtable}
+  \caption{Extended Output for Runge-Kutta and Adams-Bashforth}\label{tables}
+\end{table}
+
 \end{document}
