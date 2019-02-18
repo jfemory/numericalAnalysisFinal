@@ -58,7 +58,7 @@
 }
 
 \begin{document}
-\title{Numerical Analysis Programing Project \\ Dr. Songming Hou}
+\title{Numerical Analysis Programming Project \\ Dr. Songming Hou}
 \author{John Emory}
 \address{Program of Mathematics and Statistics, Louisiana Tech University}
 \email{jfe004@latech.edu}
@@ -96,18 +96,36 @@ So, our final equaiton we want to plot is:
 \begin{figure}
   \centering
   \begin{center}
-    \includegraphics[scale=0.2]{3dPlot-NumericalFinal.jpg}
+    \includegraphics[scale=0.17]{3dPlot-NumericalFinal.jpg}
     \caption{Plot of solutions to $\frac{ds}{dt}$}
   \end{center}
 \end{figure}
 
 The exact solutions to when Tom catches Jerry are the points on the surface in Figure 1 that intersect with
-the plane at $s=0$ with minimal $t$ value
-.
+the plane at $s=0$ with minimal $t$ value. This can be seen in the figure as the curve traced
+by the surface where it intersects the bottom of the plot. The plot indicates that at $a=0.01$ m$s^{-1}$, Tom
+will catch Jerry at roughly 82 seconds.
 \section{Problem}
 For $a = 0.01$ ms$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
 Use an appropriate step size to ensure an accurate result.
+\\
+\\
+The source code for both Runge-Kutta and Adams-Bashforth is attached as Appendix 1, and at
+https://github.com/jfemory/numericalAnalysisFinal. From Table \ref{RKout}, the condensed
+output of the fourth-order Runge-Kutta calculations, we see that Tom catches Jerry between
+81.5 and 82 seconds, when the sign of the distance changes to negative.
 
+\begin{table}[h]
+  \caption{Runge-Kutta Output} %title of the table
+  \centering % centering table
+  \begin{tabular}{c rrrrrrr} % creating eight columns
+  \hline\hline %inserting double-line
+  Time (s) & 80.0 & 80.5 & 81.0& 81.5& 82.0& 82.5& 83\\ % Entering row contents
+  Distance (m) & 0.3319 & 0.2303 & 0.1323& 0.0377& -0.0535& -0.1413& -0.2257\\
+  \hline % inserts single-line
+  \end{tabular}
+  \label{RKout}
+  \end{table}
 
 \section{Problem}
 Use the Adams-Bashforth forth-order predictor-corrector to compute when Tom will catch Jerry using the
@@ -118,7 +136,8 @@ Suppose Tom's acceleration is unknown. If Tom does not catch Jerry in $120$s, is
 will catch Jerry?
 \\
 \\
-No. It is not possible. From Figure 2, we can see
+No. It is not possible. Figure 2 indicates the accelerations and times where the gap is less
+than zero. The border of the blue area indicates where the sign of the gap changes. So, we can see can see
 that any constant acceleration path (horizontal lines) that does
 not reduce the gap to 0m by 120s has no solutions to the
 right of 120s. In other words, any constant acceleration path
@@ -128,7 +147,7 @@ if tom has not caught Jerry by 120s, Tom will never catch Jerry.
 \begin{figure}
   \centering
   \begin{center}
-    \includegraphics[scale=0.2]{2dPlot-NumericalFinal.jpg}
+    \includegraphics[scale=0.13]{2dPlot-NumericalFinal.jpg}
     \caption{Time vs Acceleration Zeros}
   \end{center}
 \end{figure}

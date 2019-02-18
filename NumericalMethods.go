@@ -13,7 +13,7 @@ type Entry struct {
 var acc = 0.01
 var a = 0.0
 var b = 90.0
-var N = 90
+var N = 180
 var alpha = 100.0
 var h = (b - a) / float64(N)
 
@@ -21,12 +21,17 @@ func main() {
 	outputRK := rungeKutta(a, alpha)
 	fmt.Println(outputRK)
 	outputAB := adamsBashforth(outputRK)
-	for i := 0; i < len(outputRK); i++ {
-		fmt.Println(outputRK[i])
-	}
-	fmt.Println()
-	for j := 0; j < len(outputAB); j++ {
-		fmt.Println(outputAB[j])
+	fmt.Println("Runge-Kutta")
+	printIt(outputRK)
+	fmt.Println("Adams-Bashforth")
+	printIt(outputAB)
+}
+
+//printIt takes an array of entries, and prints them to stdo in a format that can easily be
+//copied out
+func printIt(in []Entry) {
+	for i := 0; i < len(in); i++ {
+		fmt.Println(in[i].t, in[i].w)
 	}
 }
 
