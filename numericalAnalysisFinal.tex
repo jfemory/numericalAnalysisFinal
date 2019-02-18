@@ -11,7 +11,7 @@
 %
 \documentclass{amsart}
 %     If your article includes graphics, uncomment this command.
-\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate}
+\usepackage{amsthm,graphicx,amssymb,textcomp,cancel,bbm,enumerate,svg,graphicx,caption}
 
 
 \setcounter{section}{-1}
@@ -92,6 +92,18 @@ Solving for $c$ at our initial value of $s(0)=100$ m will yield an equation we c
 \[c = 2500a + 150\]
 So, our final equaiton we want to plot is:
 \[s(a,t) = 50a(t-50+50\cdot e^{-0.02t})+150\cdot e^{-0.02t} -50\]
+
+\begin{figure}
+  \centering
+  \begin{center}
+    \includegraphics[scale=0.1]{3dPlot-NumericalFinal.jpg}
+    \caption{Plot of solutions to $\frac{ds}{dt}$}
+  \end{center}
+\end{figure}
+
+The exact solutions to when Tom catches Jerry are the points on the surface in Figure 1 that intersect with
+the plane at $s=0$ with minimal $t$ value
+.
 \section{Problem}
 For $a = 0.01$ ms$^{-2}$, use the fourth-order Runge-Kutta method to compute when Tom will catch Jerry.
 Use an appropriate step size to ensure an accurate result.
